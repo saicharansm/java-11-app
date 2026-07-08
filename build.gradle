@@ -33,7 +33,7 @@ apply plugin: 'java'
 ext {
   // Cribbed from https://github.com/mindscratch/reactor-offline/blob/master/build.gradle
   javadocLinks = [
-    "http://docs.oracle.com/javase/11/docs/api/"
+    "https://docs.oracle.com/en/java/javase/21/docs/api/"
   ] as String[]
 }
 
@@ -46,9 +46,9 @@ dependencies {
   // Compile-time dependencies
 
   // Test dependencies
-  testCompile("org.junit.jupiter:junit-jupiter-api:${junitJupiterVersion}")
-  testCompile("org.assertj:assertj-core:${assertjVersion}")
-  testRuntime("org.junit.jupiter:junit-jupiter-engine:${junitJupiterVersion}")
+  testImplementation("org.junit.jupiter:junit-jupiter-api:${junitJupiterVersion}")
+  testImplementation("org.assertj:assertj-core:${assertjVersion}")
+  testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitJupiterVersion}")
 }
 
 // *********************************************************************************************************************
@@ -63,8 +63,8 @@ eclipse {
 
 idea {
   project {
-    jdkName = '11'
-    languageLevel = '11'
+    jdkName = '21'
+    languageLevel = '21'
   }
 }
 
@@ -85,7 +85,7 @@ test {
 task javadocTests(type: Javadoc, group: "documentation" ) {
   description = 'Generates Javadoc API documentation for the test source code.'
   source = sourceSets.test.allJava
-  classpath = configurations.testCompile
+  classpath = configurations.testImplementation
   options.links(project.ext.javadocLinks)
   options.addBooleanOption('html5',true)
 }

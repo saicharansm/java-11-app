@@ -33,7 +33,7 @@ apply plugin: 'java'
 ext {
   // Cribbed from https://github.com/mindscratch/reactor-offline/blob/master/build.gradle
   javadocLinks = [
-    "http://docs.oracle.com/javase/11/docs/api/"
+    "http://docs.oracle.com/javase/21/docs/api/"
   ] as String[]
 }
 
@@ -63,8 +63,8 @@ eclipse {
 
 idea {
   project {
-    jdkName = '11'
-    languageLevel = '11'
+    jdkName = '21'
+    languageLevel = '21'
   }
 }
 
